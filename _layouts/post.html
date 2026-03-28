@@ -1,18 +1,21 @@
 ---
 layout: default
 ---
-{%- include header.html -%}
 
-<!-- Main -->
-<div id="main">
-	<!-- Post -->
-	<article class="shade-two">
-	  <div class="container">
-			<header>
-				<h2>{{- page.title -}}</h2>
-				<p>{% if page.author %}{{ page.author }}, {% endif %}{{- page.date | date_to_long_string -}}</p>
-			</header>
-	    {{- content -}}
-	  </div>
-	</article>
-</div>
+<article class="post-article">
+	<div class="container">
+		<header class="post-header fade-in">
+			<time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
+				{{ page.date | date: "%B %-d, %Y" }}
+			</time>
+			<h1>{{ page.title }}</h1>
+			{% if page.author %}<p class="post-author">{{ page.author }}</p>{% endif %}
+		</header>
+		<div class="post-content fade-in">
+			{{ content }}
+		</div>
+		<div class="post-nav fade-in">
+			<a href="{{ '/blog' | relative_url }}">&larr; Back to Blog</a>
+		</div>
+	</div>
+</article>

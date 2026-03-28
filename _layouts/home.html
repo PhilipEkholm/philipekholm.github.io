@@ -1,15 +1,39 @@
 ---
 layout: default
 ---
-{%- assign _sections = site.sections | sort: 'order' -%}
-{%- include header.html scrolly_nav=_sections -%}
-<!-- Main -->
-<div id="main">
-	{%- if page.content != "" -%}
-		{%- include section.html title=page.title photo=page.cover-photo photo-alt=page.cover-photo-alt auto-header=page.auto-header content=page.content -%}
-	{%- endif -%}
-	<!-- Sections -->
-	{%- for _section in _sections -%}
-		{%- include section.html title=_section.title photo=_section.cover-photo photo-alt=_section.cover-photo-alt auto-header=_section.auto-header content=_section.content -%}
-	{%- endfor -%}
-</div>
+
+<!-- Hero -->
+<section class="hero" style="background-image: url('{{ '/assets/images/banner.jpg' | relative_url }}')">
+	<div class="hero-overlay"></div>
+	<div class="hero-content fade-in">
+		<h1>{{ site.title }}</h1>
+		<p>{{ site.description }}</p>
+	</div>
+	<div class="hero-scroll-hint">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+			<path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+		</svg>
+	</div>
+</section>
+
+<!-- Projects -->
+<section class="projects-section">
+	<div class="container">
+		<h2 class="section-title fade-in">Selected Work</h2>
+		<div class="project-grid">
+			{% for project in site.data.projects %}
+			<a href="{{ project.url }}" target="_blank" rel="noopener" class="project-card fade-in">
+				<div class="project-image">
+					<img src="{{ project.image | relative_url }}" alt="{{ project.title }}" loading="lazy" />
+				</div>
+				<div class="project-overlay">
+					<h3>{{ project.title }}</h3>
+					<p>{{ project.description }}</p>
+				</div>
+			</a>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+{{ content }}

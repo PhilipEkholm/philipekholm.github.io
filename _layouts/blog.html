@@ -1,25 +1,53 @@
 ---
 layout: default
 ---
+
+<section class="page-section">
+	<div class="container">
+		<header class="page-header fade-in">
+			<h1>Blog</h1>
+		</header>
+		<div class="blog-list">
+			{% for post in site.posts %}
+			<article class="blog-card fade-in">
+				<a href="{{ post.url | relative_url }}">
+					<time class="blog-card-date" datetime="{{ post.date | date_to_xmlschema }}">
+						{{ post.date | date: "%B %-d, %Y" }}
+					</time>
+					<h2 class="blog-card-title">{{ post.title }}</h2>
+					{% if post.excerpt %}
+					<p class="blog-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+					{% endif %}
+					<span class="blog-card-link">Read more &rarr;</span>
+				</a>
+			</article>
+			{% endfor %}
+			{% if site.posts.size == 0 %}
+			<p class="empty-state">No posts yet. Check back soon!</p>
+			{% endif %}
+		</div>
+	</div>
+</section>
 {%- assign _posts = site.posts | sort: 'date' | reverse -%}
 {%- include header.html scrolly_nav=_posts -%}
 <!-- Main -->
 <div id="main">
 	{%- if page.content != "" -%}
-		{%- include section.html title=page.title photo=page.cover-photo photo-alt=page.cover-photo-alt auto-header=page.auto-header content=page.content -%}
+	{%- include section.html title=page.title photo=page.cover-photo photo-alt=page.cover-photo-alt
+	auto-header=page.auto-header content=page.content -%}
 	{%- endif -%}
 	<!-- Posts List -->
 	{%- for _post in _posts -%}
-		{%- capture _title -%}
-			<a href="{{- _post.url | absolute_url -}}">{{- _post.title -}}</a>
-		{%- endcapture -%}
-		{%- capture _subtitle -%}
-			{% if _post.author -%}{{- _post.author }} | {% endif %}
-			{{- _post.date | date_to_long_string -}}
-		{%- endcapture -%}
-		{%- capture _excerpt -%}<p>{{- _post.excerpt | strip_html | truncatewords: 100 -}}</p>{%- endcapture -%}
-		{%- capture _link -%}<a href="{{- _post.url | absolute_url -}}">read more</a>{%- endcapture -%}
-		{%- assign _content = _excerpt | append: _link -%}
-		{%- include section.html title=_title subtitle=_subtitle content=_content -%}
+	{%- capture _title -%}
+	<a href="{{- _post.url | absolute_url -}}">{{- _post.title -}}</a>
+	{%- endcapture -%}
+	{%- capture _subtitle -%}
+	{% if _post.author -%}{{- _post.author }} | {% endif %}
+	{{- _post.date | date_to_long_string -}}
+	{%- endcapture -%}
+	{%- capture _excerpt -%}<p>{{- _post.excerpt | strip_html | truncatewords: 100 -}}</p>{%- endcapture -%}
+	{%- capture _link -%}<a href="{{- _post.url | absolute_url -}}">read more</a>{%- endcapture -%}
+	{%- assign _content = _excerpt | append: _link -%}
+	{%- include section.html title=_title subtitle=_subtitle content=_content -%}
 	{%- endfor -%}
 </div>

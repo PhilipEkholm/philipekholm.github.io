@@ -1,11 +1,10 @@
-<!-- Footer -->
-<div id="footer">
-  
-  <!-- Copyright -->
-  <ul class="copyright">
-    {% if site.title or site.author %}
-      <li>&copy; {{ site.title | default: site.author }} 2018. All rights reserved.</li>
-    {% endif %}
-  </ul>
-  
-</div>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      {% if site.github_url %}<a href="{{ site.github_url }}" target="_blank" rel="noopener">GitHub</a>{% endif %}
+      {% if site.linkedin_url %}<a href="{{ site.linkedin_url }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
+      <a href="mailto:{{ site.email }}">Email</a>
+    </div>
+    <p class="footer-copy">&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+  </div>
+</footer>

@@ -1,14 +1,35 @@
-<!DOCTYPE HTML>
-<!--
-Prologue by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-Jekyll integration by Chris Bobbe | chrisbobbe.github.io
--->
-<html>
-	{%- include head.html -%}
-	<body>
-		{{- content -}}
-		{%- include footer.html -%}
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body{% if page.layout=='home' %} class="home-page" {% endif %}>
+	{% include nav.html %}
+	<main>
+		{{ content }}
+	</main>
+	{% include footer.html %}
+	<script>
+		// Scroll-aware nav
+		const nav = document.getElementById('site-nav');
+		const onScroll = () => {
+			nav.classList.toggle('scrolled', window.scrollY > 50);
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+		onScroll();
+
+		// Mobile nav toggle
+		const toggle = document.getElementById('nav-toggle');
+		const links = document.getElementById('nav-links');
+		toggle.addEventListener('click', () => {
+			links.classList.toggle('open');
+			toggle.classList.toggle('open');
+		});
+
+		// Fade-in on scroll
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+		}, { threshold: 0.1 });
+		document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+	</script>
 	</body>
+
 </html>
