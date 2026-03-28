@@ -1,7 +1,8 @@
 ---
 layout: page
 title: Contact
-permalink: /contact
+permalink: /professional/contact
+section: professional
 ---
 
 <div class="contact-grid">

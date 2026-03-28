@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<section class="page-section">
+    <div class="container">
+        <header class="page-header fade-in">
+            <h1>{{ page.title }}</h1>
+            {% if page.subtitle %}<p class="page-subtitle">{{ page.subtitle }}</p>{% endif %}
+        </header>
+        <div class="gallery-grid gallery-full">
+            {% for photo in site.data.gallery %}
+            <div class="gallery-item fade-in">
+                <img src="{{ photo.image | relative_url }}" alt="{{ photo.caption }}" loading="lazy" />
+                {% if photo.caption %}<span class="gallery-caption">{{ photo.caption }}</span>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

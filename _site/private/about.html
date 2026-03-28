@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
+
+  
+  
+
+  <title>Om mig — Philip Ekholm</title>
+  <meta name="description" content="IT-consultant based in Malmö, Sweden" />
+  <meta name="author" content="Philip Ekholm" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Om mig — Philip Ekholm" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://localhost:4000/private/about" />
+  <meta property="og:site_name" content="Philip Ekholm" />
+  <meta property="og:description" content="IT-consultant based in Malmö, Sweden" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Om mig | Philip Ekholm</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Om mig" />
+<meta name="author" content="Philip Ekholm" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="IT-consultant based in Malmö, Sweden" />
+<meta property="og:description" content="IT-consultant based in Malmö, Sweden" />
+<link rel="canonical" href="http://localhost:4000/private/about" />
+<meta property="og:url" content="http://localhost:4000/private/about" />
+<meta property="og:site_name" content="Philip Ekholm" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Om mig" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Philip Ekholm"},"description":"IT-consultant based in Malmö, Sweden","headline":"Om mig","url":"http://localhost:4000/private/about"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+
+<body
+	class="  section-private">
+	
+	
+
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    
+    <a href="/private/" class="nav-logo">Philip Ekholm</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Visa meny">
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/private/" >Hem</a>
+      </li>
+      <li><a href="/private/about" class="active" >Om mig</a></li>
+      <li><a href="/private/gallery" >Galleri</a></li>
+      <li><a href="/private/contact" >Kontakt</a></li>
+      <li class="nav-divider"><a href="/professional/">Professional →</a></li>
+    </ul>
+    
+  </div>
+</nav>
+
+	
+	<main>
+		<section class="page-section">
+	<div class="container">
+		<header class="page-header fade-in">
+			<h1>Om mig</h1>
+			
+		</header>
+		<div class="page-content fade-in">
+			<div class="about-layout">
+  <div class="about-photo">
+    <img src="/assets/private/kimjphoto_27689.jpg" alt="Philip Ekholm" />
+  </div>
+  <div class="about-text">
+
+<!-- Accurate enough, my b-day is 30th of Dec, so 363 days a year it'll correctly display my age-->
+
+
+<h2>Hej!</h2>
+
+<p>Jag heter Philip Ekholm. Jag och är 29 år gammal och bor i Malmö och jobbar som IT-konsult. På fritiden gillar jag att resa, träna CrossFit och Hyrox. Jag dansar också Salsa och Bachata.</p>
+
+<p>Den här delen av hemsidan är mer personlig — här delar jag med mig av foton, resor och annat som inte nödvändigtvis har med jobb att göra.</p>
+
+<h2>Intressen</h2>
+
+<p>Roadtrips, fotografi, CrossFit, Hyrox, Salsa, Bachata.</p>
+
+  </div>
+</div>
+
+		</div>
+	</div>
+</section>
+
+	</main>
+	
+	<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/PhilipEkholm" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/philip-ekholm-6543a114b/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:philipekholm@protonmail.com">Email</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Philip Ekholm. All rights reserved.</p>
+  </div>
+</footer>
+
+	
+	<script>
+		// Scroll-aware nav
+		const nav = document.getElementById('site-nav');
+		if (nav) {
+			const onScroll = () => {
+				nav.classList.toggle('scrolled', window.scrollY > 50);
+			};
+			window.addEventListener('scroll', onScroll, { passive: true });
+			onScroll();
+		}
+
+		// Mobile nav toggle
+		const toggle = document.getElementById('nav-toggle');
+		const links = document.getElementById('nav-links');
+		if (toggle && links) {
+			toggle.addEventListener('click', () => {
+				links.classList.toggle('open');
+				toggle.classList.toggle('open');
+			});
+		}
+
+		// Fade-in on scroll
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+		}, { threshold: 0.1 });
+		document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+	</script>
+</body>
+
+</html>

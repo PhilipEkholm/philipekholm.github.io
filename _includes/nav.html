@@ -1,17 +1,41 @@
+{% assign section = page.section | default: "professional" %}
+
 <nav class="site-nav" id="site-nav">
   <div class="nav-inner">
-    <a href="{{ '/' | relative_url }}" class="nav-logo">{{ site.title }}</a>
+    {% if section == "private" %}
+    <a href="{{ '/private/' | relative_url }}" class="nav-logo">Philip Ekholm</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Visa meny">
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="{{ '/private/' | relative_url }}" {% if page.url=='/private/' %}class="active" {% endif %}>Hem</a>
+      </li>
+      <li><a href="{{ '/private/about' | relative_url }}" {% if page.url=='/private/about' %}class="active" {% endif
+          %}>Om mig</a></li>
+      <li><a href="{{ '/private/gallery' | relative_url }}" {% if page.url=='/private/gallery' %}class="active" {% endif
+          %}>Galleri</a></li>
+      <li><a href="{{ '/private/contact' | relative_url }}" {% if page.url=='/private/contact' %}class="active" {% endif
+          %}>Kontakt</a></li>
+      <li class="nav-divider"><a href="{{ '/professional/' | relative_url }}">Professional →</a></li>
+    </ul>
+    {% else %}
+    <a href="{{ '/professional/' | relative_url }}" class="nav-logo">Philip Ekholm</a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
       <span></span>
       <span></span>
     </button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="{{ '/' | relative_url }}" {% if page.url=='/' %}class="active" {% endif %}>Projects</a></li>
-      <li><a href="{{ '/about' | relative_url }}" {% if page.url=='/about' %}class="active" {% endif %}>About</a></li>
-      <li><a href="{{ '/blog' | relative_url }}" {% if page.url=='/blog' or page.layout=='post' %}class="active" {%
-          endif %}>Blog</a></li>
-      <li><a href="{{ '/contact' | relative_url }}" {% if page.url=='/contact' %}class="active" {% endif %}>Contact</a>
-      </li>
+      <li><a href="{{ '/professional/' | relative_url }}" {% if page.url=='/professional/' %}class="active" {% endif
+          %}>Projects</a></li>
+      <li><a href="{{ '/professional/about' | relative_url }}" {% if page.url=='/professional/about' %}class="active" {%
+          endif %}>About</a></li>
+      <li><a href="{{ '/professional/blog' | relative_url }}" {% if page.url=='/professional/blog' or
+          page.layout=='post' %}class="active" {% endif %}>Blog</a></li>
+      <li><a href="{{ '/professional/contact' | relative_url }}" {% if page.url=='/professional/contact'
+          %}class="active" {% endif %}>Contact</a></li>
+      <li class="nav-divider"><a href="{{ '/private/' | relative_url }}">Private →</a></li>
     </ul>
+    {% endif %}
   </div>
 </nav>

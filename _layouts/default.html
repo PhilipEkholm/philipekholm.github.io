@@ -1,28 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{% if page.section == 'private' %}sv{% else %}en{% endif %}">
 {% include head.html %}
-<body{% if page.layout=='home' %} class="home-page" {% endif %}>
+
+<body
+	class="{% if page.layout == 'home' %}home-page{% endif %} {% if page.layout == 'landing' %}landing-page{% endif %} {% if page.section %}section-{{ page.section }}{% endif %}">
+	{% unless page.layout == 'landing' %}
 	{% include nav.html %}
+	{% endunless %}
 	<main>
 		{{ content }}
 	</main>
+	{% unless page.layout == 'landing' %}
 	{% include footer.html %}
+	{% endunless %}
 	<script>
 		// Scroll-aware nav
 		const nav = document.getElementById('site-nav');
-		const onScroll = () => {
-			nav.classList.toggle('scrolled', window.scrollY > 50);
-		};
-		window.addEventListener('scroll', onScroll, { passive: true });
-		onScroll();
+		if (nav) {
+			const onScroll = () => {
+				nav.classList.toggle('scrolled', window.scrollY > 50);
+			};
+			window.addEventListener('scroll', onScroll, { passive: true });
+			onScroll();
+		}
 
 		// Mobile nav toggle
 		const toggle = document.getElementById('nav-toggle');
 		const links = document.getElementById('nav-links');
-		toggle.addEventListener('click', () => {
-			links.classList.toggle('open');
-			toggle.classList.toggle('open');
-		});
+		if (toggle && links) {
+			toggle.addEventListener('click', () => {
+				links.classList.toggle('open');
+				toggle.classList.toggle('open');
+			});
+		}
 
 		// Fade-in on scroll
 		const observer = new IntersectionObserver((entries) => {
@@ -30,6 +40,6 @@
 		}, { threshold: 0.1 });
 		document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 	</script>
-	</body>
+</body>
 
 </html>

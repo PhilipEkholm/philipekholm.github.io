@@ -1,23 +1,23 @@
 - title: "Panera"
   description: "An image editor built with JavaFX featuring filters, adjustments, and a clean interface."
-  image: "/assets/images/pic02.png"
+  image: "/assets/professional/panera.png"
   url: "https://github.com/PhilipEkholm/Panera"
   tags: ["Java", "JavaFX"]
 
 - title: "BloX"
   description: "A side project exploring creative coding and interactive experiences."
-  image: "/assets/images/blox.png"
+  image: "/assets/professional/blox.png"
   url: "https://github.com/PhilipEkholm/BloX"
   tags: ["Project"]
 
 - title: "Autonomous Robot"
   description: "An autonomous robot capable of navigating and interacting with its environment."
-  image: "/assets/images/pic04.png"
+  image: "/assets/professional/robot.png"
   url: "https://www.youtube.com/watch?v=2_iN8TSJEWA"
   tags: ["Robotics", "Embedded"]
 
 - title: "Kronaby — Anima"
-  description: "Software engineering work on connected watches at Anima, the company behind Kronaby."
-  image: "/assets/images/kronaby.jpg"
+  description: "IT-consultanting work on connected watches at Anima, the company behind Kronaby."
+  image: "/assets/professional/kronaby.jpg"
   url: "https://kronaby.com/"
   tags: ["Professional"]

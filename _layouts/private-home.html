@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<!-- Hero -->
+<section class="hero" style="background-image: url('{{ '/assets/common-images/sundspromenaden.JPG' | relative_url }}')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content fade-in">
+        <h1>Philip Ekholm</h1>
+        <p>Foton, resor &amp; livet i Skåne</p>
+    </div>
+    <div class="hero-scroll-hint">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+        </svg>
+    </div>
+</section>
+
+<!-- Photo preview -->
+<section class="projects-section">
+    <div class="container">
+        <h2 class="section-title fade-in">Senaste foton</h2>
+        <div class="gallery-grid">
+            {% for photo in site.data.gallery limit:6 %}
+            <div class="gallery-item fade-in">
+                <img src="{{ photo.image | relative_url }}" alt="{{ photo.caption }}" loading="lazy" />
+                {% if photo.caption %}<span class="gallery-caption">{{ photo.caption }}</span>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="section-cta fade-in">
+            <a href="{{ '/private/gallery' | relative_url }}" class="cta-link">Visa alla foton →</a>
+        </div>
+    </div>
+</section>
+
+{{ content }}

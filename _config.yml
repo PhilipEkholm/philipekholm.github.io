@@ -1,5 +1,5 @@
 title: Philip Ekholm
-description: Software Engineer based in Malmö, Sweden
+description: IT-consultant based in Malmö, Sweden
 author: Philip Ekholm
 email: philipekholm@protonmail.com
 
@@ -12,7 +12,7 @@ linkedin_url: "https://www.linkedin.com/in/philip-ekholm-6543a114b/"
 
 # Build
 markdown: kramdown
-permalink: /blog/:title/
+permalink: /professional/blog/:title/
 sass:
   style: compressed
 
