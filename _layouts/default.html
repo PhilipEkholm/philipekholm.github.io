@@ -3,7 +3,7 @@
 {% include head.html %}
 
 <body
-	class="{% if page.layout == 'home' %}home-page{% endif %} {% if page.layout == 'landing' %}landing-page{% endif %} {% if page.section %}section-{{ page.section }}{% endif %}">
+	class="{% if page.layout == 'home' or page.layout == 'private-home' %}home-page{% endif %} {% if page.layout == 'landing' %}landing-page{% endif %} {% if page.section %}section-{{ page.section }}{% endif %}">
 	{% unless page.layout == 'landing' %}
 	{% include nav.html %}
 	{% endunless %}
