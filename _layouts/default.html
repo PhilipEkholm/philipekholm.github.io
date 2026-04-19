@@ -13,6 +13,7 @@
 	{% unless page.layout == 'landing' %}
 	{% include footer.html %}
 	{% endunless %}
+	{% include lightbox.html %}
 	<script>
 		// Scroll-aware nav
 		const nav = document.getElementById('site-nav');
@@ -39,6 +40,65 @@
 			entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
 		}, { threshold: 0.1 });
 		document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+		// Lightbox
+		(function () {
+			const lightbox = document.getElementById('lightbox');
+			const lbImg = document.getElementById('lightbox-img');
+			const lbCaption = document.getElementById('lightbox-caption');
+			const lbContent = document.getElementById('lightbox-content');
+			const items = Array.from(document.querySelectorAll('.gallery-item[data-index]'));
+			if (!lightbox || items.length === 0) return;
+
+			let currentIndex = 0;
+
+			function open(index) {
+				const img = items[index].querySelector('img');
+				const caption = items[index].querySelector('.gallery-caption');
+				if (!img) return;
+				currentIndex = index;
+				lbImg.src = img.src;
+				lbImg.alt = img.alt || '';
+				lbCaption.textContent = caption ? caption.textContent : '';
+				lbCaption.style.display = caption && caption.textContent ? '' : 'none';
+				lightbox.classList.add('open');
+				lightbox.setAttribute('aria-hidden', 'false');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function close() {
+				lightbox.classList.remove('open');
+				lightbox.setAttribute('aria-hidden', 'true');
+				document.body.style.overflow = '';
+			}
+
+			function prev() {
+				open((currentIndex - 1 + items.length) % items.length);
+			}
+
+			function next() {
+				open((currentIndex + 1) % items.length);
+			}
+
+			items.forEach(function (item, i) {
+				item.addEventListener('click', function () { open(i); });
+			});
+
+			document.getElementById('lightbox-close').addEventListener('click', close);
+			document.getElementById('lightbox-prev').addEventListener('click', prev);
+			document.getElementById('lightbox-next').addEventListener('click', next);
+
+			lightbox.addEventListener('click', function (e) {
+				if (e.target === lightbox || e.target === lbContent) close();
+			});
+
+			document.addEventListener('keydown', function (e) {
+				if (!lightbox.classList.contains('open')) return;
+				if (e.key === 'Escape') close();
+				else if (e.key === 'ArrowLeft') prev();
+				else if (e.key === 'ArrowRight') next();
+			});
+		})();
 	</script>
 </body>
 

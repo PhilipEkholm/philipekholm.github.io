@@ -22,7 +22,7 @@ layout: default
         <h2 class="section-title fade-in">Senaste foton</h2>
         <div class="gallery-grid">
             {% for photo in site.data.gallery limit:6 %}
-            <div class="gallery-item fade-in">
+            <div class="gallery-item fade-in" data-index="{{ forloop.index0 }}" style="cursor:pointer">
                 <img src="{{ photo.image | relative_url }}" alt="{{ photo.caption }}" loading="lazy" />
                 {% if photo.caption %}<span class="gallery-caption">{{ photo.caption }}</span>{% endif %}
             </div>

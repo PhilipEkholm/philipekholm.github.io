@@ -10,7 +10,7 @@ layout: default
         </header>
         <div class="gallery-grid gallery-full">
             {% for photo in site.data.gallery %}
-            <div class="gallery-item fade-in">
+            <div class="gallery-item fade-in" data-index="{{ forloop.index0 }}" style="cursor:pointer">
                 <img src="{{ photo.image | relative_url }}" alt="{{ photo.caption }}" loading="lazy" />
                 {% if photo.caption %}<span class="gallery-caption">{{ photo.caption }}</span>{% endif %}
             </div>
